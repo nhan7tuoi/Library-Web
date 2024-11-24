@@ -1,9 +1,17 @@
 import { Button, Image } from "antd";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { _createView } from "../../book/api";
+import { _deleteHistory } from "../api";
 
 const ListBooks = ({ title, data }) => {
+  const [histories, setHistories] = useState([]);
+  console.log(data);
+  useEffect(() => {
+    if (data) {
+      setHistories(data);
+    }
+  }, [data]);
   const navigate = useNavigate();
   const handleContinuteRead = async (book,page) => {
     try {
@@ -16,41 +24,58 @@ const ListBooks = ({ title, data }) => {
       console.log(error);
     }
   };
+  const handleDeleteHistory = async (historyId) => {
+    try {
+      const response = await _deleteHistory(historyId);
+      setHistories(histories.filter((h) => h._id !== historyId));
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <div className="bg-white rounded-md p-3 shadow-md space-y-3 h-1/2">
       <p className="font-bold text-2xl">{title}</p>
       <div className="flex whitespace-nowrap overflow-auto space-x-3 h-full">
-        {data?.map((d, index) => (
-          <div key={`${d._id}_${index}`} className="h-full p-2 w-1/6 border">
+        {histories?.map((h, index) => (
+          <div key={`${h._id}_${index}`} className="h-full p-2 w-1/6 border">
             <Link
               to={"/book"}
-              state={{ history: d, book: d.book._id }}
+              state={{ history: h, book: h.book._id }}
               className="h-full p-2 hover:text-black hover:bg-gray-200 rounded-md  flex items-center"
             >
               <div>
                 <Image
-                  src={d.book.image}
+                  src={h.book.image}
                   className=""
                   style={{ width: 200, height: 300, objectFit: "cover" }}
                 />
                 <div className="flex flex-col">
                   <div className="w-40">
                     <p className="font-bold text-lg text-blue-600 overflow-hidden whitespace-nowrap text-ellipsis w-full">
-                      {d.book.title}
+                      {h.book.title}
                     </p>
                     <p className=" overflow-hidden whitespace-nowrap text-ellipsis w-full">
-                      {d.book.author}
+                      {h.book.author}
                     </p>
                   </div>
                 </div>
               </div>
             </Link>
-            <Button
-              onClick={() => handleContinuteRead(d.book,d.page)}
-              className="hover:text-blue-700 z-20"
-            >
-              Đọc tiếp
-            </Button>
+            <div className="flex justify-around items-center ">
+              <Button
+                onClick={() => handleContinuteRead(h.book, h.page)}
+                className="hover:text-blue-700 z-20 bg-green-600 text-white"
+              >
+                Đọc tiếp
+              </Button>
+              <Button
+                onClick={() => handleDeleteHistory(h._id)}
+                className="hover:text-blue-700 z-20 bg-orange-400 text-white"
+              >
+                Xóa
+              </Button>
+            </div>
           </div>
         ))}
       </div>

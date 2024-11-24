@@ -53,3 +53,8 @@ export const _findBooks = async (keyword, page, limit) => {
     params: { page: page, limit: limit },
   });
 };
+
+export const _deleteHistory = async (historyId) => {
+  const url = `/histories/${historyId}`;
+  return await axiosInstance.delete(url);
+};
