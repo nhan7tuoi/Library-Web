@@ -4,7 +4,7 @@ const msalConfig = {
   auth: {
     clientId: "11407c16-3804-492a-9989-09fd88b1d244",
     authority: "https://login.microsoftonline.com/common",
-    redirectUri: "http://localhost:5173/auth", // URL của ứng dụng
+    redirectUri: "https://thuvieniuh.online/auth", // URL của ứng dụng
   },
 };
 
