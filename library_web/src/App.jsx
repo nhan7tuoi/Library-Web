@@ -2,7 +2,7 @@ import Login from "./modules/auth/Login";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import PrivateRoute from "./route/PrivateRoute";
 import Home from "./modules/main/Home";
-import Register from "./modules/auth/register";
+import Register from "./modules/auth/Register";
 import AuthLayout from "./modules/auth/AuthLayout";
 import Layout from "./components/Layout";
 import Genre from "./modules/main/Genre";
