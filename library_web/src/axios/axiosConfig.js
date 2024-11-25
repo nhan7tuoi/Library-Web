@@ -3,7 +3,7 @@ import axios from "axios";
 import { Modal } from "antd";
 
 const axiosInstance = axios.create({
-  baseURL: "https://api.thuvieniuh.online/api/v1", // Đặt URL gốc của API
+  baseURL: "http://localhost:3000/api/v1", // Đặt URL gốc của API
   timeout: 10000, // Thời gian timeout
   headers: {
     "Content-Type": "application/json",
