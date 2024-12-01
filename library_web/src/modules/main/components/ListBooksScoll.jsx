@@ -9,7 +9,7 @@ const ListBooksScoll = ({ title, data }) => {
 
       <div className="flex whitespace-nowrap overflow-auto space-x-3 h-full">
         {data?.map((d, index) => (
-          <div key={`${d._id}_${index}`} className="h-full p-2 w-1/6 ">
+          <div key={`${d._id}_${index}`} className="h-full p-2 w-fit ">
             <Link
               to={"/book"}
               state={{ book: d._id }}

@@ -3,7 +3,7 @@ import { Button, Select, Slider, Spin } from "antd";
 const { Option } = Select;
 import { GrChapterNext, GrChapterPrevious } from "react-icons/gr";
 import { CiPause1, CiPlay1 } from "react-icons/ci";
-import { useLocation } from "react-router-dom";
+import { useLocation, useOutletContext } from "react-router-dom";
 import { LuSkipBack, LuSkipForward } from "react-icons/lu";
 import { _getBookContentBypage } from "../api";
 import Loading from "../../../components/Loading";
@@ -35,8 +35,9 @@ const AudioViewer = () => {
   const rateRef = useRef(1);
   const voice = useRef("Vietnamese Female");
   const [currentSentenceIndex, setCurrentSentenceIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const [isPaused, setIsPaused] = useState(true);
   const sentenceRefs = useRef([]);
+  const { cPage, setCPage } = useOutletContext();
 
   useEffect(() => {
     pageRef.current = page;
@@ -47,7 +48,7 @@ const AudioViewer = () => {
   }, [page]);
   useEffect(() => {
     // Start speaking when sentences change (new page loaded)
-    if (sentences.length > 0) {
+    if (sentences.length > 0 && !isPaused) {
       start();
     }
   }, [sentences]);
@@ -74,6 +75,7 @@ const AudioViewer = () => {
       const response = await _getBookContentBypage(book._id, pageRef.current);
       pageRef.current = response.data.content.page;
       debouncedSave(pageRef.current - 2);
+      setCPage(pageRef.current - 2);
       const temp = splitIntoSentences(response.data.content.content);
       console.log("Trang:", pageRef.current, "Nội dung:", temp.length);
       if (temp.length === 0 && pageRef.current > 1) {

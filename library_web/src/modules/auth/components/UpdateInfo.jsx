@@ -84,7 +84,7 @@ const UpdateInfo = ({ handleBack, email, setStage }) => {
       openNotificationWithIcon(
         api,
         "Đăng ký thất bại!",
-        "Tên không chứ ký tự đặc biệt"
+        "Tên không chứa ký tự đặc biệt"
       );
       return false;
     }
@@ -121,7 +121,7 @@ const UpdateInfo = ({ handleBack, email, setStage }) => {
             rules={[
               {
                 required: true,
-                message: "Vui lòng nhập!",
+                message: "Vui lòng nhập mật khẩu!",
               },
             ]}
           >
@@ -129,12 +129,12 @@ const UpdateInfo = ({ handleBack, email, setStage }) => {
           </Form.Item>
 
           <Form.Item
-            label="Nhập lại mật khẩu"
+            label="Xác nhận mật khẩu"
             name="comfirmPassword"
             rules={[
               {
                 required: true,
-                message: "Vui lòng nhập!",
+                message: "Vui lòng xác nhận mật khẩu!",
               },
             ]}
           >
@@ -147,7 +147,7 @@ const UpdateInfo = ({ handleBack, email, setStage }) => {
             rules={[
               {
                 required: true,
-                message: "Vui lòng nhập!",
+                message: "Vui lòng nhập họ tên!",
               },
             ]}
           >
@@ -159,7 +159,7 @@ const UpdateInfo = ({ handleBack, email, setStage }) => {
             rules={[
               {
                 required: true,
-                message: "Vui lòng nhập!",
+                message: "Vui lòng nhập mã sinh viên/ giảng viên!",
               },
             ]}
           >
@@ -171,7 +171,7 @@ const UpdateInfo = ({ handleBack, email, setStage }) => {
             rules={[
               {
                 required: true,
-                message: "Vui lòng chọn!",
+                message: "Vui lòng chọn chuyên ngành!",
               },
             ]}
           >
@@ -191,7 +191,7 @@ const UpdateInfo = ({ handleBack, email, setStage }) => {
               rules={[
                 {
                   required: true,
-                  message: "Vui lòng nhập!",
+                  message: "Vui lòng chọn ngày sinh!",
                 },
               ]}
             >
@@ -203,7 +203,7 @@ const UpdateInfo = ({ handleBack, email, setStage }) => {
               rules={[
                 {
                   required: true,
-                  message: "Vui lòng nhập!",
+                  message: "Vui lòng chọn giới tính!",
                 },
               ]}
             >
