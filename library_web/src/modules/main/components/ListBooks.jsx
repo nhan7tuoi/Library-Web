@@ -38,7 +38,7 @@ const ListBooks = ({ title, data }) => {
       <p className="font-bold text-2xl">{title}</p>
       <div className="flex whitespace-nowrap overflow-auto space-x-3 h-full">
         {histories?.map((h, index) => (
-          <div key={`${h._id}_${index}`} className="h-full p-2 w-1/6 border">
+          <div key={`${h._id}_${index}`} className="h-full p-2 w-fit border">
             <Link
               to={"/book"}
               state={{ history: h, book: h.book._id }}
