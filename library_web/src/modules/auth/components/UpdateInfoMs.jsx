@@ -59,8 +59,8 @@ const UpdateInfoMs = () => {
 
       openNotificationWithIcon(
         api,
-        "Đăng ký thất bại!",
-        error.response.data.error.message.matches
+        "Opps có lỗi xảy ra không thể đăng nhập",
+        error.response.data.error.message
       );
     }
   };
