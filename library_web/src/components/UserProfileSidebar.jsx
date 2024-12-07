@@ -20,7 +20,13 @@ import { useDispatch } from "react-redux";
 import { setUserData } from "../redux/slices/userSlice";
 import { openNotificationWithIcon } from "../helper";
 const { Option } = Select;
-const UserProfileSidebar = ({ user, isOpen, onClose, logout,changePassword }) => {
+const UserProfileSidebar = ({
+  user,
+  isOpen,
+  onClose,
+  logout,
+  changePassword,
+}) => {
   const [nuser, setUser] = useState(user);
   const [file, setFile] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -81,6 +87,11 @@ const UserProfileSidebar = ({ user, isOpen, onClose, logout,changePassword }) =>
     setFile(file); // Lưu file ảnh vào state
     return false; // Ngăn không upload mặc định của Upload
   };
+
+  const handClose = () => {
+    setIsEditing(false);
+    onClose();
+  };
   const validateInput = (values) => {
     const namePattern = /^[a-zA-ZÀ-ỹ\s]+$/;
     const codePattern = /^\d{8}$/;
@@ -113,7 +124,7 @@ const UserProfileSidebar = ({ user, isOpen, onClose, logout,changePassword }) =>
       >
         <Button
           className="absolute top-4 right-4 text-xl text-gray-500"
-          onClick={onClose}
+          onClick={() => handClose()}
         >
           <RiCloseLargeFill />
         </Button>
