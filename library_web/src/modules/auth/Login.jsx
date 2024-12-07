@@ -41,7 +41,8 @@ const Login = () => {
         scopes: ["User.Read"],
         prompt: "select_account",
       });
-
+      console.log(response);
+      
       const loginResponse = await loginWithMs(
         response.account.username,
         response.uniqueId
