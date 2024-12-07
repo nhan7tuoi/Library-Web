@@ -20,8 +20,7 @@ const UpdateInfoMs = () => {
   const [listMajors, setListMajors] = useState([]);
   const [api, contextHolder] = notification.useNotification();
   const location = useLocation();
-  const { user, accessToken } = location.state;
-  console.log(user);
+  const { user, accessToken, name } = location.state;
   
   const navigate = useNavigate();
   useEffect(() => {
@@ -42,7 +41,7 @@ const UpdateInfoMs = () => {
     }
     try {
       const userUpdate = {
-        name: user.name,
+        name: name,
         email: user.email,
         gender: values.gender,
         dob: values.dob,
@@ -94,7 +93,7 @@ const UpdateInfoMs = () => {
           <p className="mb-4">
             Xin chào{" "}
             <span className="font-semibold text-base text-blue-600">
-              {user.name}
+              {name}
             </span>
           </p>
           <p className="text-gray-500">Hãy cập nhật thông tin để tiếp tục</p>
