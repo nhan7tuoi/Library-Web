@@ -107,7 +107,7 @@ const UserProfileSidebar = ({ user, isOpen, onClose, logout,changePassword }) =>
     <>
       {contextHolder}
       <div
-        className={`fixed top-0 right-0 h-svh w-3/12 bg-white shadow-lg transform ${
+        className={`fixed top-0 right-0 h-full max-h-screen w-3/12 bg-white shadow-lg transform ${
           isOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 ease-in-out z-50 overflow-y-auto`}
       >
@@ -292,11 +292,7 @@ const UserProfileSidebar = ({ user, isOpen, onClose, logout,changePassword }) =>
               >
                 Đổi mật khẩu
               </Button>
-              <Button
-                type="primary"
-                className=" w-full"
-                onClick={logout}
-              >
+              <Button type="primary" className=" w-full" onClick={logout}>
                 Đăng xuất
               </Button>
             </div>

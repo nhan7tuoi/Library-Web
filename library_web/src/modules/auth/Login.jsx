@@ -41,7 +41,6 @@ const Login = () => {
         scopes: ["User.Read"],
         prompt: "select_account",
       });
-      console.log(response);
       
       const loginResponse = await loginWithMs(
         response.account.username,
@@ -57,6 +56,7 @@ const Login = () => {
         navigate("/update-user", {
           state: {
             user: user,
+            name:response.account.name,
             accessToken: loginResponse.data.accessToken,
           },
         });
