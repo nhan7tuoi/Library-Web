@@ -46,6 +46,8 @@ const Login = () => {
         response.account.username,
         response.uniqueId
       );
+      console.log(loginResponse);
+      
       const user = loginResponse.data.user;
 
       if (user.status == "active") {
