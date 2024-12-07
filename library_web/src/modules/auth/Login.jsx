@@ -58,7 +58,7 @@ const Login = () => {
         navigate("/update-user", {
           state: {
             user: user,
-            name:response.account.name,
+            name: response.account.name,
             accessToken: loginResponse.data.accessToken,
           },
         });

@@ -21,7 +21,8 @@ const UpdateInfoMs = () => {
   const [api, contextHolder] = notification.useNotification();
   const location = useLocation();
   const { user, accessToken, name } = location.state;
-  
+  console.log(accessToken);
+
   const navigate = useNavigate();
   useEffect(() => {
     fetchData();
@@ -48,12 +49,13 @@ const UpdateInfoMs = () => {
         majors: values.majors,
         code: values.code,
       };
+      localStorage.setItem("accessToken", "");
       axiosInstance.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
       const response = await updateUser(userUpdate);
       console.log(accessToken);
       localStorage.setItem("user", JSON.stringify(response.data));
-      localStorage.setItem("accessToken",accessToken);
-      navigate("/home")
+      localStorage.setItem("accessToken", accessToken);
+      navigate("/home");
     } catch (error) {
       console.log(error);
 
