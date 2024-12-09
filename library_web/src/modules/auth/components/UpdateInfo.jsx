@@ -166,12 +166,12 @@ const UpdateInfo = ({ handleBack, email, setStage }) => {
             <Input />
           </Form.Item>
           <Form.Item
-            label="Chuyên ngành"
+            label="Khoa"
             name="majors"
             rules={[
               {
                 required: true,
-                message: "Vui lòng chọn chuyên ngành!",
+                message: "Vui lòng chọn khoa!",
               },
             ]}
           >

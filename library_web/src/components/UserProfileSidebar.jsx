@@ -216,7 +216,7 @@ const UserProfileSidebar = ({
               />
             </Form.Item>
             <Form.Item
-              label="Chuyên ngành"
+              label="Khoa"
               name="majors"
               rules={[
                 {

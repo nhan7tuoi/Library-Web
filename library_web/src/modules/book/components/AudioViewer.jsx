@@ -77,6 +77,16 @@ const AudioViewer = () => {
       debouncedSave(pageRef.current - 2);
       setCPage(pageRef.current - 2);
       const temp = splitIntoSentences(response.data.content.content);
+      // for (let i = 0; i < temp.length; i++) {
+      //   console.log("Đang đọc câu", i);
+      //   window.responsiveVoice.speak(temp[i], voice.current, {
+      //     rate: rateRef.current,
+      //     volume: 0,
+      //     onend: () => {
+      //       console.log("Đã đọc câu", i);
+      //     },
+      //   });
+      // }
       console.log("Trang:", pageRef.current, "Nội dung:", temp.length);
       if (temp.length === 0 && pageRef.current > 1) {
         console.log("Trang này trống, chuyển sang trang tiếp theo");

@@ -121,7 +121,7 @@ const UpdateInfoMs = () => {
             <Input />
           </Form.Item>
           <Form.Item
-            label="Chuyên ngành"
+            label="Khoa"
             name="majors"
             rules={[
               {
