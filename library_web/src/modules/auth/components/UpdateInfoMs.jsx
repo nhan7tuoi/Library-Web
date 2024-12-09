@@ -20,9 +20,9 @@ const UpdateInfoMs = () => {
   const [listMajors, setListMajors] = useState([]);
   const [api, contextHolder] = notification.useNotification();
   const location = useLocation();
-  const { user, accessToken } = location.state;
-  console.log(user);
-  
+  const { user, accessToken, name } = location.state;
+  console.log(accessToken);
+
   const navigate = useNavigate();
   useEffect(() => {
     fetchData();
@@ -42,26 +42,27 @@ const UpdateInfoMs = () => {
     }
     try {
       const userUpdate = {
-        name: user.name,
+        name: name,
         email: user.email,
         gender: values.gender,
         dob: values.dob,
         majors: values.majors,
         code: values.code,
       };
+      localStorage.setItem("accessToken", "");
       axiosInstance.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
       const response = await updateUser(userUpdate);
       console.log(accessToken);
       localStorage.setItem("user", JSON.stringify(response.data));
-      localStorage.setItem("accessToken",accessToken);
-      navigate("/home")
+      localStorage.setItem("accessToken", accessToken);
+      navigate("/home");
     } catch (error) {
       console.log(error);
 
       openNotificationWithIcon(
         api,
-        "Đăng ký thất bại!",
-        error.response.data.error.message.matches
+        "Opps có lỗi xảy ra không thể đăng nhập",
+        error.response.data.error.message
       );
     }
   };
@@ -94,7 +95,7 @@ const UpdateInfoMs = () => {
           <p className="mb-4">
             Xin chào{" "}
             <span className="font-semibold text-base text-blue-600">
-              {user.name}
+              {name}
             </span>
           </p>
           <p className="text-gray-500">Hãy cập nhật thông tin để tiếp tục</p>

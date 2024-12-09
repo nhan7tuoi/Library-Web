@@ -20,7 +20,13 @@ import { useDispatch } from "react-redux";
 import { setUserData } from "../redux/slices/userSlice";
 import { openNotificationWithIcon } from "../helper";
 const { Option } = Select;
-const UserProfileSidebar = ({ user, isOpen, onClose, logout,changePassword }) => {
+const UserProfileSidebar = ({
+  user,
+  isOpen,
+  onClose,
+  logout,
+  changePassword,
+}) => {
   const [nuser, setUser] = useState(user);
   const [file, setFile] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -81,6 +87,11 @@ const UserProfileSidebar = ({ user, isOpen, onClose, logout,changePassword }) =>
     setFile(file); // Lưu file ảnh vào state
     return false; // Ngăn không upload mặc định của Upload
   };
+
+  const handClose = () => {
+    setIsEditing(false);
+    onClose();
+  };
   const validateInput = (values) => {
     const namePattern = /^[a-zA-ZÀ-ỹ\s]+$/;
     const codePattern = /^\d{8}$/;
@@ -107,13 +118,13 @@ const UserProfileSidebar = ({ user, isOpen, onClose, logout,changePassword }) =>
     <>
       {contextHolder}
       <div
-        className={`fixed top-0 right-0 h-svh w-3/12 bg-white shadow-lg transform ${
+        className={`fixed top-0 right-0 h-full max-h-screen w-3/12 bg-white shadow-lg transform ${
           isOpen ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300 ease-in-out z-50`}
+        } transition-transform duration-300 ease-in-out z-50 overflow-y-auto`}
       >
         <Button
           className="absolute top-4 right-4 text-xl text-gray-500"
-          onClick={onClose}
+          onClick={() => handClose()}
         >
           <RiCloseLargeFill />
         </Button>
@@ -292,11 +303,7 @@ const UserProfileSidebar = ({ user, isOpen, onClose, logout,changePassword }) =>
               >
                 Đổi mật khẩu
               </Button>
-              <Button
-                type="primary"
-                className=" w-full"
-                onClick={logout}
-              >
+              <Button type="primary" className=" w-full" onClick={logout}>
                 Đăng xuất
               </Button>
             </div>

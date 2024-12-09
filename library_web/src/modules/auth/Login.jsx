@@ -41,11 +41,13 @@ const Login = () => {
         scopes: ["User.Read"],
         prompt: "select_account",
       });
-
+      
       const loginResponse = await loginWithMs(
         response.account.username,
         response.uniqueId
       );
+      console.log(loginResponse);
+      
       const user = loginResponse.data.user;
 
       if (user.status == "active") {
@@ -56,6 +58,7 @@ const Login = () => {
         navigate("/update-user", {
           state: {
             user: user,
+            name: response.account.name,
             accessToken: loginResponse.data.accessToken,
           },
         });
