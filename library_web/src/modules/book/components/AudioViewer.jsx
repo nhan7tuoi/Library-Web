@@ -143,13 +143,7 @@ const AudioViewer = () => {
         },
       });
     } catch (error) {
-      window.responsiveVoice.speak(sentences[index], voice.current, {
-        rate: rateRef.current,
-        onend: () => {
-          setCurrentSentenceIndex(index + 1);
-          speakSentence(index + 1); // Speak the next sentence
-        },
-      });
+      start();
     }
   };
 
