@@ -117,6 +117,9 @@ const BookDetail = () => {
         <p className="text-sm text-gray-600">
           Thể loại: <span className="font-medium">{book?.genre}</span>
         </p>
+        <p className="text-sm text-gray-600">
+          Khoa: <span className="font-medium">{book?.majors}</span>
+        </p>
         <p className="text-sm text-gray-600">Tóm tắt: {book?.summary}</p>
       </div>
       {isLoading && <Loading />}

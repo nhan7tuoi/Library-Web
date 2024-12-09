@@ -205,7 +205,7 @@ const UserProfileSidebar = ({ user, isOpen, onClose, logout,changePassword }) =>
               />
             </Form.Item>
             <Form.Item
-              label="Chuyên ngành"
+              label="Khoa"
               name="majors"
               rules={[
                 {
