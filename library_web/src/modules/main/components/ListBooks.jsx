@@ -48,7 +48,7 @@ const ListBooks = ({ title, data }) => {
                 <Image
                   src={h.book.image}
                   className=""
-                  style={{ width: 200, height: 300, objectFit: "cover" }}
+                  style={{ width: 200, height: 300, objectFit: "cover",minWidth:200 ,minHeight:300}}
                 />
                 <div className="flex flex-col">
                   <div className="w-40">
