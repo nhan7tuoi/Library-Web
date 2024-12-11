@@ -66,6 +66,7 @@ const UserProfileSidebar = ({
       if (file) {
         formData.append("image", file); // Thêm file vào formData
         const response2 = await updateAvatar(formData);
+        response.data.image = response2.data.image;
       }
 
       console.log("Response from server:", response.data);
