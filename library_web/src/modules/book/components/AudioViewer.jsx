@@ -51,6 +51,9 @@ const AudioViewer = () => {
     if (sentences.length > 0 && !isPaused) {
       start();
     }
+    return () => {
+      window.responsiveVoice.cancel(); // Stop voice when leaving the page
+    };
   }, [sentences]);
   //  useEffect(() => {
 

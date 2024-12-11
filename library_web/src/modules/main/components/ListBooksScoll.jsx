@@ -19,7 +19,7 @@ const ListBooksScoll = ({ title, data }) => {
                 <img
                   src={d.image}
                   className=""
-                  style={{ width: 200, height: 250, objectFit: "cover" }}
+                  style={{ width: 200, height: 300, objectFit: "cover",minWidth:200 }}
                 />
                 <div className="flex flex-col">
                   <div className="w-40">
