@@ -151,7 +151,7 @@ const Login = () => {
         ) : (
           <div className="bg-gray-100">
               <div className="flex flex-col items-center justify-center bg-white p-4">
-                <h1 className="text-2xl font-bold mb-4 text-center">Chào bạn, đây là đồ án của sinh viên: Phạm Đức Nhân - Nguyễn Nhật Sang</h1>
+                <h1 className="text-2xl font-bold mb-4 text-center">Chào bạn, đây là đồ án của sinh viên: Phạm Đức Nhân - Nguyễn Nhật Sang (Chưa hỗ trợ giao diện trên điện thoại)</h1>
                 <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 w-full justify-center">
                   <a
                     onClick={() => setIsOpen(true)}
