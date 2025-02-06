@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Form, Input, Flex } from "antd";
 import { IMAGES } from "../../constants";
@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 
 const Login = () => {
   const [api, contextHolder] = notification.useNotification();
+  const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const email = location.state?.email;
   const navigate = useNavigate();
@@ -66,10 +67,15 @@ const Login = () => {
       console.log("Login failed:", error);
     }
   };
+  const handleCLose = () => {
+    setIsOpen(false);
+  };
   return (
     <>
       {contextHolder}
-      <div className="p-10">
+      {
+        isOpen ? (
+          <div className="p-10">
         <div className="border flex flex-col justify-center items-center space-y-5 shadow-2xl rounded-xl bg-white">
           <div>
             <img src={IMAGES.LOGO} width={250} />
@@ -142,6 +148,32 @@ const Login = () => {
           </div>
         </div>
       </div>
+        ) : (
+          <div className="bg-gray-100">
+              <div className="flex flex-col items-center justify-center bg-white p-4">
+                <h1 className="text-2xl font-bold mb-4 text-center">Chào bạn, đây là đồ án của sinh viên: Phạm Đức Nhân - Nguyễn Nhật Sang</h1>
+                <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 w-full justify-center">
+                  <a
+                    onClick={() => setIsOpen(true)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 transition flex items-center justify-center w-full sm:w-auto text-center"
+                  >
+                    Ghé thăm Website
+                  </a>
+                  <a
+                    href="https://lib.iuh.edu.vn/thong-bao/thong-bao-v-v-bao-tri-thu-vien-so-dh-cong-nghiep-tp-ho-chi-minh/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 bg-green-500 text-white rounded-lg shadow hover:bg-green-600 transition flex items-center justify-center w-full sm:w-auto text-center"
+                  >
+                    Truy cập Trang thư viện chính thức
+                  </a>
+                </div>
+              </div>
+              </div>
+        )
+      }
     </>
   );
 };
