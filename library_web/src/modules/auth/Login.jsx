@@ -149,29 +149,31 @@ const Login = () => {
         </div>
       </div>
         ) : (
-          <div className="bg-gray-100">
-              <div className="flex flex-col items-center justify-center bg-white p-4">
-                <h1 className="text-2xl font-bold mb-4 text-center">Chào bạn, đây là đồ án của sinh viên: Phạm Đức Nhân - Nguyễn Nhật Sang (Chưa hỗ trợ giao diện trên điện thoại)</h1>
-                <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 w-full justify-center">
-                  <a
-                    onClick={() => setIsOpen(true)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 transition flex items-center justify-center w-full sm:w-auto text-center"
-                  >
-                    Ghé thăm Website
-                  </a>
-                  <a
-                    href="https://lib.iuh.edu.vn/thong-bao/thong-bao-v-v-bao-tri-thu-vien-so-dh-cong-nghiep-tp-ho-chi-minh/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 bg-green-500 text-white rounded-lg shadow hover:bg-green-600 transition flex items-center justify-center w-full sm:w-auto text-center"
-                  >
-                    Truy cập Trang thư viện chính thức
-                  </a>
-                </div>
-              </div>
-              </div>
+          <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
+          <div className="bg-white shadow-lg rounded-2xl p-6 text-center max-w-md">
+            <h1 className="text-2xl font-bold text-gray-800">Chúng tôi đang bảo trì</h1>
+            <p className="text-gray-600 mt-2">
+              Trang web hiện đang được bảo trì để nâng cấp hệ thống. Vui lòng quay lại sau.
+            </p>
+            <div className="mt-4 animate-pulse">
+              <svg
+                className="w-12 h-12 text-yellow-500 mx-auto"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M13 16h-1v-4h-1m0-4h.01M12 2a10 10 0 1 1-10 10A10 10 0 0 1 12 2z"
+                />
+              </svg>
+            </div>
+            <p className="text-gray-500 text-sm mt-4">Cảm ơn bạn đã kiên nhẫn!</p>
+          </div>
+        </div>
         )
       }
     </>
